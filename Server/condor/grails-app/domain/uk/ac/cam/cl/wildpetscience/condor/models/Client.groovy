@@ -1,13 +1,31 @@
 package uk.ac.cam.cl.wildpetscience.condor.models;
 
-import uk.ac.cam.cl.wildpetscience.condor.models.AnimalPosition;
 import uk.ac.cam.cl.wildpetscience.condor.models.AnimalType;
-import uk.ac.cam.cl.wildpetscience.condor.models.Zone;
 
 class Client {
     AnimalType animalType;
     Date dateConnected;
 
-    static embedded = ['animalType'];
-    static hasMany = [positions: AnimalPosition, zones: Zone];
+    List<AnimalPosition> positions;
+    List<Zone> zones;
+
+    static embedded = ['positions', 'zones'];
+}
+
+class AnimalPosition {
+    double time;
+    int zoneId;
+    List<Coordinate> coordinates;
+
+    static embedded = ['coordinates'];
+}
+
+class Coordinate {
+    String axis;
+    double position;
+}
+
+class Zone {
+    int zoneId;
+    ZoneType zoneType;
 }
