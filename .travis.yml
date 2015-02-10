@@ -1,1 +1,6 @@
-language: java
+language: groovy
+jdk:
+  - oraclejdk7
+script: ./grailsw refresh-dependencies
+  && ./grailsw "test-app unit:"
+  && ./grailsw "test-app functional:"
