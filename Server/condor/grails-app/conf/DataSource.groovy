@@ -1,4 +1,14 @@
-dataSource {
+grails {
+    mongo {
+        host = "localhost"
+        port = 27017
+        username = "condor"
+        password = "condor"
+        databaseName = "condor"
+    }
+}
+
+/*dataSource {
     pooled = true
     jmxExport = true
     driverClassName = "org.h2.Driver"
@@ -54,4 +64,4 @@ environments {
             }
         }
     }
-}
+}*/
