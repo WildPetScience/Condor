@@ -1,4 +1,0 @@
-rootProject.name = 'Condor'
-
-include 'Server'
-
