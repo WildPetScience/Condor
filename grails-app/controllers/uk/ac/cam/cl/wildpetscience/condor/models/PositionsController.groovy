@@ -5,9 +5,8 @@ import grails.transaction.Transactional
 
 @Transactional(readOnly = true)
 class PositionsController {
-    static responseFormats = ['json', 'xml']
-
-    static allowedMethods = [save: "POST"]
+    static responseFormats = ['json', 'xml'];
+    static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"];
 
     def index() {
         int clientId = params.clientId;
@@ -23,7 +22,7 @@ class PositionsController {
 
         position.validate()
         if (position.hasErrors()) {
-            response position.errors.getAllErrors(), [status: NOT_ACCEPTABLE];
+            render status: NOT_ACCEPTABLE;
             return;
         }
 
