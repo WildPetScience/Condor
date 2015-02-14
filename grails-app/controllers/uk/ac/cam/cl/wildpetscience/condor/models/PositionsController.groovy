@@ -9,8 +9,7 @@ class PositionsController {
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"];
 
     def index() {
-        int clientId = params.clientId;
-        respond Client.get(clientId).positions, [status: OK];
+        respond  Client.get(params.ClientId), [status: OK];
     }
 
     @Transactional
@@ -26,8 +25,7 @@ class PositionsController {
             return;
         }
 
-        int clientId = params.clientId;
-        Client c = Client.get(clientId);
+        Client c = Client.get(params.ClientId);
         c.addToPositions(position);
         c.save flush:true;
         respond position, [status: CREATED];
