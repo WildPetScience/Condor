@@ -4,12 +4,12 @@ import static org.springframework.http.HttpStatus.*
 import grails.transaction.Transactional
 
 @Transactional(readOnly = true)
-class PositionsController {
+class PositionController {
     static responseFormats = ['json', 'xml'];
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"];
 
     def index() {
-        respond  Client.get(params.ClientId), [status: OK];
+        respond Client.get(params.ClientId).positions, [status: OK];
     }
 
     @Transactional
@@ -21,7 +21,7 @@ class PositionsController {
 
         position.validate()
         if (position.hasErrors()) {
-            render status: NOT_ACCEPTABLE;
+            respond position.errors.getAllErrors(), [status: NOT_ACCEPTABLE];
             return;
         }
 
@@ -40,7 +40,7 @@ class PositionsController {
 
         position.validate()
         if (position.hasErrors()) {
-            response position.errors.getAllErrors(), [status: NOT_ACCEPTABLE];
+            respond position.errors.getAllErrors(), [status: NOT_ACCEPTABLE];
             return;
         }
 
