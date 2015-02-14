@@ -5,46 +5,60 @@ import grails.transaction.Transactional
 
 @Transactional(readOnly = true)
 class PositionsController {
-
     static responseFormats = ['json', 'xml']
 
     static allowedMethods = [save: "POST"]
 
     def index() {
-        /*def clientId = params.ClientId;
-        Client c = Client.get(clientId);
-        AnimalPosition p = new AnimalPosition(time: 1, zoneId: 1, coordinates: new SpatialCoordinates());
-
-        Zone z = new Zone(zoneType: ZoneType.first(), zoneId: 1);
-
-        //c.addToZones(z);
-        c.addToPositions(p);*/
-        /*def clientId = params.ClientId;
-        Client c = Client.get(clientId);
-        Coordinate coo = new Coordinate(axis: "x", position: 1.0);
-        AnimalPosition p = c.positions.first();
-        p.addToCoordinates(coo);
-        p.save();
-        c.save();*/
-        respond Client.get(params.ClientId).positions, [status: OK]
+        int clientId = params.clientId;
+        respond Client.get(clientId).positions, [status: OK];
     }
 
     @Transactional
     def save(AnimalPosition position) {
         if (position == null) {
-            render status: NOT_FOUND
-            return
+            render status: NOT_FOUND;
+            return;
         }
 
         position.validate()
         if (position.hasErrors()) {
-            response position.errors.getAllErrors(), [status: NOT_ACCEPTABLE]
-            return
+            response position.errors.getAllErrors(), [status: NOT_ACCEPTABLE];
+            return;
         }
 
-        Client c = Client.get(params.ClientId);
+        int clientId = params.clientId;
+        Client c = Client.get(clientId);
         c.addToPositions(position);
-        c.save flush:true
-        respond position, [status: CREATED]
+        c.save flush:true;
+        respond position, [status: CREATED];
+    }
+
+    @Transactional
+    def update(AnimalPosition position) {
+        if (position == null) {
+            render status: NOT_FOUND;
+            return;
+        }
+
+        position.validate()
+        if (position.hasErrors()) {
+            response position.errors.getAllErrors(), [status: NOT_ACCEPTABLE];
+            return;
+        }
+
+        position.save flush:true
+        respond position, [status: OK];
+    }
+
+    @Transactional
+    def delete(AnimalPosition positon) {
+        if (position == null) {
+            render status: NOT_FOUND;
+            return;
+        }
+
+        position.delete flush:true
+        render status: NO_CONTENT;
     }
 }
