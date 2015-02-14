@@ -8,14 +8,8 @@ class UrlMappings {
         }
 
         "/clients"(resources:"Client", excludes:['create', 'show', 'edit', 'patch']) {
-            "/positions"(controller:"Position", method:"GET", action:"index")
-            "/positions"(controller:"Position", method:"POST", action:"save")
-            "/positions"(controller:"Position", method:"PUT", action:"update")
-            "/positions"(controller:"Position", method:"DELETE", action:"delete")
-            "/zones"(controller:"Zone", method:"GET", action:"index")
-            "/zones"(controller:"Zone", method:"POST", action:"save")
-            "/zones"(controller:"Zone", method:"PUT", action:"update")
-            "/zones"(controller:"Zone", method:"DELETE", action:"delete")
+            "/positions"(resources:"AnimalPosition", excludes:['create', 'show', 'edit', 'patch'])
+            "/zones"(resources:"Zone", excludes:['create', 'show', 'edit', 'patch'])
 		}
 
         "/animals"(resources:"AnimalType",  excludes:['create', 'show', 'edit', 'patch'])
