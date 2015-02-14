@@ -1,7 +1,5 @@
 package uk.ac.cam.cl.wildpetscience.condor.models
 
-
-
 import static org.springframework.http.HttpStatus.*
 import grails.transaction.Transactional
 
