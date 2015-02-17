@@ -72,6 +72,7 @@ grails.project.dependency.resolution = {
 
         // UI
         runtime ':twitter-bootstrap:3.3.1'
+        compile ":angularjs:1.0.0"
 
         // Uncomment these to enable additional asset-pipeline capabilities
         //compile ":sass-asset-pipeline:1.9.0"
