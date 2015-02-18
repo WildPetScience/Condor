@@ -1,104 +1,60 @@
 package uk.ac.cam.cl.wildpetscience.condor.models
 
-
-
 import static org.springframework.http.HttpStatus.*
 import grails.transaction.Transactional
 
 @Transactional(readOnly = true)
 class ClientController {
-
-    static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
+    static responseFormats = ['json', 'xml'];
+    static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"];
 
     def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)
         respond Client.list(params), model:[clientInstanceCount: Client.count()]
     }
 
-    def show(Client clientInstance) {
-        respond clientInstance
-    }
+    @Transactional
+    def save(Client client) {
+        if (client == null) {
+            render status: NOT_FOUND;
+            return;
+        }
 
-    def create() {
-        respond new Client(params)
+        client.validate()
+        if (client.hasErrors()) {
+            respond client.errors.getAllErrors(), [status: NOT_ACCEPTABLE];
+            return;
+        }
+
+        client.save flush:true;
+        respond client, [status: CREATED];
     }
 
     @Transactional
-    def save(Client clientInstance) {
-        if (clientInstance == null) {
-            notFound()
-            return
+    def update(Client client) {
+        if (client == null) {
+            render status: NOT_FOUND;
+            return;
         }
 
-        if (clientInstance.hasErrors()) {
-            respond clientInstance.errors, view:'create'
-            return
+        client.validate()
+        if (client.hasErrors()) {
+            respond client.errors.getAllErrors(), [status: NOT_ACCEPTABLE];
+            return;
         }
 
-        clientInstance.save flush:true
-
-        request.withFormat {
-            form multipartForm {
-                flash.message = message(code: 'default.created.message', args: [message(code: 'client.label', default: 'Client'), clientInstance.id])
-                redirect clientInstance
-            }
-            '*' { respond clientInstance, [status: CREATED] }
-        }
-    }
-
-    def edit(Client clientInstance) {
-        respond clientInstance
+        client.save flush:true
+        respond client, [status: OK];
     }
 
     @Transactional
-    def update(Client clientInstance) {
-        if (clientInstance == null) {
-            notFound()
-            return
+    def delete(Client client) {
+        if (client == null) {
+            render status: NOT_FOUND;
+            return;
         }
 
-        if (clientInstance.hasErrors()) {
-            respond clientInstance.errors, view:'edit'
-            return
-        }
-
-        clientInstance.save flush:true
-
-        request.withFormat {
-            form multipartForm {
-                flash.message = message(code: 'default.updated.message', args: [message(code: 'Client.label', default: 'Client'), clientInstance.id])
-                redirect clientInstance
-            }
-            '*'{ respond clientInstance, [status: OK] }
-        }
-    }
-
-    @Transactional
-    def delete(Client clientInstance) {
-
-        if (clientInstance == null) {
-            notFound()
-            return
-        }
-
-        clientInstance.delete flush:true
-
-        request.withFormat {
-            form multipartForm {
-                flash.message = message(code: 'default.deleted.message', args: [message(code: 'Client.label', default: 'Client'), clientInstance.id])
-                redirect action:"index", method:"GET"
-            }
-            '*'{ render status: NO_CONTENT }
-        }
-    }
-
-    protected void notFound() {
-        request.withFormat {
-            form multipartForm {
-                flash.message = message(code: 'default.not.found.message', args: [message(code: 'client.label', default: 'Client'), params.id])
-                redirect action: "index", method: "GET"
-            }
-            '*'{ render status: NOT_FOUND }
-        }
+        client.delete flush:true
+        render status: NO_CONTENT;
     }
 }

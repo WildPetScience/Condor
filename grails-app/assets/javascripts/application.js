@@ -5,17 +5,18 @@
 // You're free to add application-wide JavaScript to this file, but it's generally better 
 // to create separate JavaScript files as needed.
 //
-//= require jquery
-//= require_self
-//= require bootstrap
-//= require grails-angularjs
 
-if (typeof jQuery !== 'undefined') {
-	(function($) {
-		$('#spinner').ajaxStart(function() {
-			$(this).fadeIn();
-		}).ajaxStop(function() {
-			$(this).fadeOut();
-		});
-	})(jQuery);
-}
+//= require ./../bower-components/jquery/dist/jquery.js
+//= require ./../bower-components/angular/angular.js
+//= require ./../bower-components/angular-route/angular-route.js
+//= require ./../bower-components/angular-resource/angular-resource.js
+//= require_tree angular
+//= require ./../bower-components/bootstrap/dist/js/bootstrap.js
+//= require ./../bower-components/metisMenu/dist/metisMenu.js
+//= require ./../bower-components/raphael/raphael.js
+//= require ./../bower-components/morrisjs/morris.js
+//= require morris-data.js
+//= require ./../bower-components/startbootstrap-sb-admin-2/dist/js/sb-admin-2.js
+
+//= require_tree .
+//= require_self

@@ -1,7 +1,5 @@
 package uk.ac.cam.cl.wildpetscience.condor.models;
 
-import uk.ac.cam.cl.wildpetscience.condor.models.AnimalType;
-
 class Client {
     AnimalType animalType;
     Date dateConnected;
@@ -15,14 +13,8 @@ class Client {
 class AnimalPosition {
     double time;
     int zoneId;
-    List<Coordinate> coordinates;
-
-    static embedded = ['coordinates'];
-}
-
-class Coordinate {
-    String axis;
-    double position;
+    double x;
+    double y;
 }
 
 class Zone {
