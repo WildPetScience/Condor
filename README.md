@@ -14,35 +14,37 @@ The main purpose of Condor is to persist data from Triton into a database so it 
 
 ### API
 The structure of the REST API is as follows:
-```Controller: AnimalPosition
- |   GET    | /api/clients/${ClientId}/api/positions            | Action: index            |
- |   POST   | /api/clients/${ClientId}/api/positions            | Action: save             |
- |   PUT    | /api/clients/${ClientId}/api/positions/${id}      | Action: update           |
- |  DELETE  | /api/clients/${ClientId}/api/positions/${id}      | Action: delete           |
+```
+Controller: AnimalPosition
+ |  GET   | /api/clients/${ClientId}/api/positions            | Action: index  |
+ |  POST  | /api/clients/${ClientId}/api/positions            | Action: save   |
+ |  PUT   | /api/clients/${ClientId}/api/positions/${id}      | Action: update |
+ | DELETE | /api/clients/${ClientId}/api/positions/${id}      | Action: delete |
 
 Controller: AnimalType
- |   GET    | /api/animals                                      | Action: index            |
- |   POST   | /api/animals                                      | Action: save             |
- |   PUT    | /api/animals/${id}                                | Action: update           |
- |  DELETE  | /api/animals/${id}                                | Action: delete           |
+ |  GET   | /api/animals                                      | Action: index  |
+ |  POST  | /api/animals                                      | Action: save   |
+ |  PUT   | /api/animals/${id}                                | Action: update |
+ | DELETE | /api/animals/${id}                                | Action: delete |
 
 Controller: Client
- |   GET    | /api/clients                                      | Action: index            |
- |   POST   | /api/clients                                      | Action: save             |
- |   PUT    | /api/clients/${id}                                | Action: update           |
- |  DELETE  | /api/clients/${id}                                | Action: delete           |
+ |  GET   | /api/clients                                      | Action: index  |
+ |  POST  | /api/clients                                      | Action: save   |
+ |  PUT   | /api/clients/${id}                                | Action: update |
+ | DELETE | /api/clients/${id}                                | Action: delete |
 
 Controller: Zone
- |   GET    | /api/clients/${ClientId}/api/zones                | Action: index            |
- |   POST   | /api/clients/${ClientId}/api/zones                | Action: save             |
- |   PUT    | /api/clients/${ClientId}/api/zones/${id}          | Action: update           |
- |  DELETE  | /api/clients/${ClientId}/api/zones/${id}          | Action: delete           |
+ |  GET   | /api/clients/${ClientId}/api/zones                | Action: index  |
+ |  POST  | /api/clients/${ClientId}/api/zones                | Action: save   |
+ |  PUT   | /api/clients/${ClientId}/api/zones/${id}          | Action: update |
+ | DELETE | /api/clients/${ClientId}/api/zones/${id}          | Action: delete |
 
 Controller: ZoneType
- |   GET    | /api/zonetypes                                    | Action: index            |
- |   POST   | /api/zonetypes                                    | Action: save             |
- |   PUT    | /api/zonetypes/${id}                              | Action: update           |
- |  DELETE  | /api/zonetypes/${id}                              | Action: delete           |```
+ |  GET   | /api/zonetypes                                    | Action: index  |
+ |  POST  | /api/zonetypes                                    | Action: save   |
+ |  PUT   | /api/zonetypes/${id}                              | Action: update |
+ | DELETE | /api/zonetypes/${id}                              | Action: delete |
+```
 
 ### AngularJS
 
