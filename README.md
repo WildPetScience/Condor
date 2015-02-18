@@ -48,7 +48,9 @@ Controller: ZoneType
 
 ### AngularJS
 
+
 ### Testing
 There are currently no unit tests or end-to-end tests. Unit tests for the Grails controllers will be written after the specified front-end features are implemented due to limited development resources.
 
 ### A note below
+For flexibility this project uses `bower` to manage front-end dependencies rather than Grails. For simplicity the `bower_components` directory is included in the repository, although these dependencies can be downloaded by running `bower install` in the root directory of the project.
