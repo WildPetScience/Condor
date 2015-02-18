@@ -1,0 +1,9 @@
+{
+  "name": "Condor",
+  "version": "0.1.0",
+  "dependencies": {
+    "angular": "1.3.13",
+    "bootstrap": "~3.3.2",
+    "startbootstrap-sb-admin-2": "~1.0.5"
+  }
+}
