@@ -12,6 +12,14 @@ Condor covers the server backend and user frontend. Condor is built with [Grails
 ### Grails
 The main purpose of Condor is to persist data from Triton into a database so it can be later analysed. MongoDB has been chosen as our database engine and the database is accessed via the REST API.
 
+##### MongoDB Configuration
+Prior to launching the application [MongoDB](http://www.mongodb.org/) must be installed and running and with access to the `condor` database configured. This can be done by launching the server, opening a MongoDB console window and entering:
+```
+using condor
+db.addUser({user: "condor", pwd: "condor", roles: [ "readWrite" ]})
+```
+It should then be possible to launch the grails application.
+
 ### API
 The structure of the REST API is as follows:
 ```
