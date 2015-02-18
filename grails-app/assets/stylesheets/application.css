@@ -9,10 +9,10 @@
 *
 *= require main
 *= require_self
-*= require ./../bower-components/bootstrap/dist/css/bootstrap
-*= require ./../bower-components/metisMenu/dist/metisMenu
-*= require ./../bower-components/startbootstrap-sb-admin-2/dist/css/timeline
-*= require ./../bower-components/startbootstrap-sb-admin-2/dist/css/sb-admin-2
-*= require ./../bower-components/morrisjs/morris
-*= require ./../bower-components/font-awesome/css/font-awesome
+*= require ./../bower-components/bootstrap/dist/css/bootstrap.css
+*= require ./../bower-components/metisMenu/dist/metisMenu.css
+*= require ./../bower-components/startbootstrap-sb-admin-2/dist/css/timeline.css
+*= require ./../bower-components/startbootstrap-sb-admin-2/dist/css/sb-admin-2.css
+*= require ./../bower-components/morrisjs/morris.css
+*= require ./../bower-components/font-awesome/css/font-awesome.css
 */

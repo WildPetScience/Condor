@@ -6,14 +6,17 @@
 // to create separate JavaScript files as needed.
 //
 
-//= require ./../bower-components/angular/angular
-//= require ./../bower-components/jquery/dist/jquery
-//= require ./../bower-components/bootstrap/dist/js/bootstrap
-//= require ./../bower-components/metisMenu/dist/metisMenu
-//= require ./../bower-components/raphael/raphael
-//= require ./../bower-components/morrisjs/morris
-//= require morris-data
-//= require ./../bower-components/startbootstrap-sb-admin-2/dist/js/sb-admin-2
+//= require ./../bower-components/jquery/dist/jquery.js
+//= require ./../bower-components/angular/angular.js
+//= require ./../bower-components/angular-route/angular-route.js
+//= require ./../bower-components/angular-resource/angular-resource.js
+//= require_tree angular
+//= require ./../bower-components/bootstrap/dist/js/bootstrap.js
+//= require ./../bower-components/metisMenu/dist/metisMenu.js
+//= require ./../bower-components/raphael/raphael.js
+//= require ./../bower-components/morrisjs/morris.js
+//= require morris-data.js
+//= require ./../bower-components/startbootstrap-sb-admin-2/dist/js/sb-admin-2.js
 
 //= require_tree .
 //= require_self

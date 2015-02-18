@@ -10,7 +10,7 @@ class AnimalTypeController {
 
     def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)
-        respond Client.list(params), model:[clientInstanceCount: Client.count()]
+        respond AnimalType.list(params), model:[clientInstanceCount: Client.count()]
     }
 
     @Transactional
