@@ -47,10 +47,22 @@ Controller: ZoneType
 ```
 
 ### AngularJS
+AngularJS was chosen due to its ease of use when it comes to consuming and iterating over rest resources. Integration of AngularJS with Grails means that the file structure of this project differs from typical just-AngularJS or just-Grails applications and is outlined below.
 
+##### Integration with Grails
+The AngularJS library resides in `/grails-app/assets/bower-components/angular/` (see "A Note Below") and is included in the project by the Grails asset-pipeline plugin which minifies and bundles javascript and stylesheet resources for production builds. The AngularJS library is explicitly included in the application's javascript bundle by including it in `/grails-app/assets/javascripts/application.js`.
+
+The Grails routing defined in `/grails-app/conf/UrlMappings.groovy` means that the root address of the website (`/`) causes Grails index view to be loaded and displayed to the user (`index.gsp` found in `/grails-app/views/index.gsp`). This view utilises the asset-pipeline plugin to load the necessary AngularJS resources which allows us to instantiate the AngularJS application using the `ng-app` attribute as normal. The following lines are responsible for loading the JS/CSS resource bundles and are implemented by Grails.
+```
+    <asset:javascript src="application.js"/>
+    <asset:stylesheet href="application.css"/>
+```
+
+##### Back to AngularJS
+The application-specific javascript files reside in `/grails-app/assets/javascripts/angular/`. This is the folder where our AngularJS controllers, filters, views and directives will reside. The application-specific HTML view files reside in `/web-app/partials/` and are completely independent of grails' views. All front end work will concern files in these two directories. It should not be necessary to modify any files in `/grails-app/views/`.
 
 ### Testing
 There are currently no unit tests or end-to-end tests. Unit tests for the Grails controllers will be written after the specified front-end features are implemented due to limited development resources.
 
-### A note below
+### A Note Below
 For flexibility this project uses `bower` to manage front-end dependencies rather than Grails. For simplicity the `bower_components` directory is included in the repository, although these dependencies can be downloaded by running `bower install` in the root directory of the project.
