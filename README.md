@@ -61,6 +61,35 @@ The Grails routing defined in `/grails-app/conf/UrlMappings.groovy` means that t
 ##### Back to AngularJS
 The application-specific javascript files reside in `/grails-app/assets/javascripts/angular/`. This is the folder where our AngularJS controllers, filters, views and directives will reside. The application-specific HTML view files reside in `/web-app/partials/` and are completely independent of grails' views. All front end work will concern files in these two directories. It should not be necessary to modify any files in `/grails-app/views/`.
 
+Bootstrap is used to assist in UI design and is included in the same way as AngularJS. The bootstrap theme [SB Admin 2](http://startbootstrap.com/template-overviews/sb-admin-2/) is currently being used in this project and it is encouraged to explore the link to see what interactive libraries this provides.
+
+##### A very brief example of consuming an API resource
+Lets say we want to list all the types of animals in the system. We know from the REST API that sending a GET request to ` /api/animals` will return an array of the animals and the precise structure of the objects returned can be trivially inspected (either by looking at the domain classes or by inspecting the generated JSON). An example of the return response is:
+```
+[  
+   {  
+      "class":"uk.ac.cam.cl.wildpetscience.condor.models.AnimalType",
+      "id":1,
+      "name":"Hamster"
+   }
+]
+```
+An example AngularJS service for consuming the AnimalType resource can be seen at `/grails-app/assets/javascripts/angular/services.js`. This service is currently being used in the AnimalsCtrl AngularJS controller by the line:
+
+```
+$scope.animals = AnimalTypes.query();
+```
+
+Which loads the list of animals from the API and stores it in the scope. In the corresponding view `/web-app/partials/animals.html` this collection is iterated over by the lines:
+```
+<div class="list-group">
+	<a href="#" class="list-group-item" ng-repeat="animal in animals">
+		<i class="fa fa-tasks fa-fw"></i> {{animal.name}}
+	</a>
+</div>
+```
+Which results in the animal names being printed out as a list in the UI. Please see the [documentation on the ngRepeat directive](https://docs.angularjs.org/api/ng/directive/ngRepeat) for more information.
+
 ### Testing
 There are currently no unit tests or end-to-end tests. Unit tests for the Grails controllers will be written after the specified front-end features are implemented due to limited development resources.
 
