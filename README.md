@@ -1,4 +1,4 @@
-# Triton
+# Condor
 
 [![Build Status](https://travis-ci.org/WildPetScience/Condor.svg)](https://travis-ci.org/WildPetScience/Condor)
 
