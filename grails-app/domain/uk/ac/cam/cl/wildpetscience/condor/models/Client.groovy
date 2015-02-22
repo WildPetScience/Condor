@@ -11,13 +11,14 @@ class Client {
 }
 
 class AnimalPosition {
-    double time;
-    int zoneId;
+    Date time;
     double x;
     double y;
+    double speed;
+    String zoneName;
 }
 
 class Zone {
-    int zoneId;
+    String zoneName;
     ZoneType zoneType;
 }

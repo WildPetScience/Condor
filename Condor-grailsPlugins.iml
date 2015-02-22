@@ -22,32 +22,11 @@
           <root url="file://$MODULE_DIR$/target/work/plugins/asset-pipeline-1.9.9/src/groovy/uglifyjs/test/unit/compress/expected" relative="/WEB-INF" />
         </webroots>
         <sourceRoots>
-          <root url="file://$MODULE_DIR$/target/work/plugins/asset-pipeline-1.9.9/src/groovy" />
-          <root url="file://$MODULE_DIR$/target/work/plugins/asset-pipeline-1.9.9/grails-app/controllers" />
-          <root url="file://$MODULE_DIR$/target/work/plugins/asset-pipeline-1.9.9/grails-app/services" />
-          <root url="file://$MODULE_DIR$/target/work/plugins/asset-pipeline-1.9.9/grails-app/taglib" />
-          <root url="file://$MODULE_DIR$/target/work/plugins/cache-1.1.8/src/java" />
-          <root url="file://$MODULE_DIR$/target/work/plugins/cache-1.1.8/src/groovy" />
-          <root url="file://$MODULE_DIR$/target/work/plugins/cache-1.1.8/grails-app/services" />
-          <root url="file://$MODULE_DIR$/target/work/plugins/cache-1.1.8/grails-app/taglib" />
           <root url="file://$MODULE_DIR$/target/work/plugins/cloud-support-1.0.11/src/groovy" />
-          <root url="file://$MODULE_DIR$/target/work/plugins/database-migration-1.4.0/src/groovy" />
-          <root url="file://$MODULE_DIR$/target/work/plugins/database-migration-1.4.0/grails-app/controllers" />
-          <root url="file://$MODULE_DIR$/target/work/plugins/database-session-1.1.2/src/java" />
-          <root url="file://$MODULE_DIR$/target/work/plugins/database-session-1.1.2/grails-app/jobs" />
-          <root url="file://$MODULE_DIR$/target/work/plugins/database-session-1.1.2/grails-app/domain" />
-          <root url="file://$MODULE_DIR$/target/work/plugins/database-session-1.1.2/grails-app/services" />
           <root url="file://$MODULE_DIR$/target/work/plugins/heroku-1.0.1/src/groovy" />
           <root url="file://$MODULE_DIR$/target/work/plugins/heroku-1.0.1/grails-app/taglib" />
-          <root url="file://$MODULE_DIR$/target/work/plugins/jquery-1.11.1/src/groovy" />
-          <root url="file://$MODULE_DIR$/target/work/plugins/jquery-1.11.1/grails-app/services" />
-          <root url="file://$MODULE_DIR$/target/work/plugins/jquery-1.11.1/grails-app/taglib" />
-          <root url="file://$MODULE_DIR$/target/work/plugins/scaffolding-2.1.2/src/java" />
-          <root url="file://$MODULE_DIR$/target/work/plugins/scaffolding-2.1.2/src/groovy" />
           <root url="file://$MODULE_DIR$/target/work/plugins/tomcat-7.0.55/src/java" />
           <root url="file://$MODULE_DIR$/target/work/plugins/tomcat-7.0.55/src/groovy" />
-          <root url="file://$MODULE_DIR$/target/work/plugins/twitter-bootstrap-3.3.1/grails-app/i18n" />
-          <root url="file://$MODULE_DIR$/target/work/plugins/twitter-bootstrap-3.3.1/grails-app/taglib" />
           <root url="file://$MODULE_DIR$/target/work/plugins/webxml-1.4.1/src/groovy" />
         </sourceRoots>
       </configuration>
@@ -75,7 +54,7 @@
     <content url="file://$MODULE_DIR$/target/work/plugins/webxml-1.4.1">
       <sourceFolder url="file://$MODULE_DIR$/target/work/plugins/webxml-1.4.1/src/groovy" isTestSource="false" />
     </content>
-    <orderEntry type="inheritedJdk" />
+    <orderEntry type="jdk" jdkName="1.7" jdkType="JavaSDK" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" scope="PROVIDED" name="grails-2.4.4" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="grails-2.4.4" level="application" />
