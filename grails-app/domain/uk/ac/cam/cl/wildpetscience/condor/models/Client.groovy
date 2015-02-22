@@ -1,8 +1,11 @@
 package uk.ac.cam.cl.wildpetscience.condor.models;
 
 class Client {
-    AnimalType animalType;
     Date dateConnected;
+
+    AnimalType animalType;
+    double cageWidth;
+    double cageHeight;
 
     List<AnimalPosition> positions;
     List<Zone> zones;
