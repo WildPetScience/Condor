@@ -24,34 +24,34 @@ It should then be possible to launch the grails application.
 The structure of the REST API is as follows:
 ```
 Controller: AnimalPosition
- |  GET   | /api/clients/${ClientId}/api/positions            | Action: index  |
- |  POST  | /api/clients/${ClientId}/api/positions            | Action: save   |
- |  PUT   | /api/clients/${ClientId}/api/positions/${id}      | Action: update |
- | DELETE | /api/clients/${ClientId}/api/positions/${id}      | Action: delete |
+ |  GET   | /api/clients/${ClientId}/positions            | Action: index  |
+ |  POST  | /api/clients/${ClientId}/positions            | Action: save   |
+ |  PUT   | /api/clients/${ClientId}/positions/${id}      | Action: update |
+ | DELETE | /api/clients/${ClientId}/positions/${id}      | Action: delete |
 
 Controller: AnimalType
- |  GET   | /api/animals                                      | Action: index  |
- |  POST  | /api/animals                                      | Action: save   |
- |  PUT   | /api/animals/${id}                                | Action: update |
- | DELETE | /api/animals/${id}                                | Action: delete |
+ |  GET   | /api/animals                                  | Action: index  |
+ |  POST  | /api/animals                                  | Action: save   |
+ |  PUT   | /api/animals/${id}                            | Action: update |
+ | DELETE | /api/animals/${id}                            | Action: delete |
 
 Controller: Client
- |  GET   | /api/clients                                      | Action: index  |
- |  POST  | /api/clients                                      | Action: save   |
- |  PUT   | /api/clients/${id}                                | Action: update |
- | DELETE | /api/clients/${id}                                | Action: delete |
+ |  GET   | /api/clients                                  | Action: index  |
+ |  POST  | /api/clients                                  | Action: save   |
+ |  PUT   | /api/clients/${id}                            | Action: update |
+ | DELETE | /api/clients/${id}                            | Action: delete |
 
 Controller: Zone
- |  GET   | /api/clients/${ClientId}/api/zones                | Action: index  |
- |  POST  | /api/clients/${ClientId}/api/zones                | Action: save   |
- |  PUT   | /api/clients/${ClientId}/api/zones/${id}          | Action: update |
- | DELETE | /api/clients/${ClientId}/api/zones/${id}          | Action: delete |
+ |  GET   | /api/clients/${ClientId}/zones                | Action: index  |
+ |  POST  | /api/clients/${ClientId}/zones                | Action: save   |
+ |  PUT   | /api/clients/${ClientId}/zones/${id}          | Action: update |
+ | DELETE | /api/clients/${ClientId}/zones/${id}          | Action: delete |
 
 Controller: ZoneType
- |  GET   | /api/zonetypes                                    | Action: index  |
- |  POST  | /api/zonetypes                                    | Action: save   |
- |  PUT   | /api/zonetypes/${id}                              | Action: update |
- | DELETE | /api/zonetypes/${id}                              | Action: delete |
+ |  GET   | /api/zonetypes                                | Action: index  |
+ |  POST  | /api/zonetypes                                | Action: save   |
+ |  PUT   | /api/zonetypes/${id}                          | Action: update |
+ | DELETE | /api/zonetypes/${id}                          | Action: delete |
 ```
 
 ### AngularJS
