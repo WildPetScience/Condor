@@ -18,7 +18,7 @@ class AnimalPosition {
     double x;
     double y;
     double speed;
-    String zoneName;
+    Zone zone;
 }
 
 class Zone {
