@@ -1,8 +1,11 @@
 package uk.ac.cam.cl.wildpetscience.condor.models;
 
 class Client {
-    AnimalType animalType;
     Date dateConnected;
+
+    AnimalType animalType;
+    double cageWidth;
+    double cageHeight;
 
     List<AnimalPosition> positions;
     List<Zone> zones;
@@ -11,13 +14,14 @@ class Client {
 }
 
 class AnimalPosition {
-    double time;
-    int zoneId;
+    Date time;
     double x;
     double y;
+    double speed;
+    Zone zone;
 }
 
 class Zone {
-    int zoneId;
+    String zoneName;
     ZoneType zoneType;
 }
