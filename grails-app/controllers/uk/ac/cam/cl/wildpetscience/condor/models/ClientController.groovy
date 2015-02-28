@@ -8,9 +8,19 @@ class ClientController {
     static responseFormats = ['json', 'xml'];
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"];
 
-    def index(Integer max) {
-        params.max = Math.min(max ?: 10, 100)
-        respond Client.list(params), model:[clientInstanceCount: Client.count()]
+    def index() {
+        String animalType = params.animalType;
+        System.out.println(animalType);
+        if (animalType != null && animalType.length() > 0) {
+            AnimalType at = AnimalType.findByName(animalType);
+            System.out.println(at.name);
+            if (at != null) {
+                respond Client.findAllByAnimalType(at, [sort: "identifier"]);
+                return;
+            }
+        }
+
+        respond Client.list();
     }
 
     @Transactional

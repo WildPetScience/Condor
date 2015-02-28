@@ -1,0 +1,78 @@
+<div class="row">
+	<div class="col-lg-12">
+		<h1 class="page-header">Welcome Back</h1>
+	</div>
+	<!-- /.col-lg-12 -->
+</div>
+<!-- /.row -->
+<div class="row">
+	<div class="col-lg-6 col-md-6">
+		<div class="panel panel-primary">
+			<div class="panel-heading">
+				<div class="row">
+					<div class="col-xs-3">
+						<i class="fa fa-comments fa-5x"></i>
+					</div>
+					<div class="col-xs-9 text-right">
+						<div class="huge">26</div>
+						<div>New Topics!</div>
+					</div>
+				</div>
+			</div>
+			<a href="#">
+				<div class="panel-footer">
+					<span class="pull-left">View Details</span>
+					<span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+					<div class="clearfix"></div>
+				</div>
+			</a>
+		</div>
+	</div>
+	<div class="col-lg-6 col-md-6">
+		<div class="panel panel-green">
+			<div class="panel-heading">
+				<div class="row">
+					<div class="col-xs-3">
+						<i class="fa fa-tasks fa-5x"></i>
+					</div>
+					<div class="col-xs-9 text-right">
+						<div class="huge">12</div>
+						<div>New Animals!</div>
+					</div>
+				</div>
+			</div>
+			<a href="#">
+				<div class="panel-footer">
+					<span class="pull-left">View Details</span>
+					<span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+					<div class="clearfix"></div>
+				</div>
+			</a>
+		</div>
+	</div>
+</div>
+<!-- /.row -->
+
+<div class="row">
+	<div class="col-lg-12">
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				<i class="fa fa-play-circle fa-fw"></i> Here are some animals you might find interesting
+			</div>
+			<!-- /.panel-heading -->
+			<div class="panel-body">
+				<div class="list-group">
+					<a href="#" class="list-group-item" ng-repeat="client in clients">
+						<i class="fa fa-tasks fa-fw"></i> {{client.animalType}}: {{client.identifier}}
+					</a>
+				</div>
+				<!-- /.list-group -->
+				<a href="#" class="btn btn-default btn-block">See more</a>
+			</div>
+			<!-- /.panel-body -->
+		</div>
+		<!-- /.panel -->
+	</div>
+	<!-- /.col-lg-12 -->
+</div>
+<!-- /.row -->

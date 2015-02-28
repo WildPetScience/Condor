@@ -15,6 +15,8 @@
 
     <asset:javascript src="application.js"/>
     <asset:stylesheet href="application.css"/>
+
+    <base href="/condor/" />
 </head>
 <body>
 <div id="wrapper">
@@ -46,7 +48,16 @@
                         <!-- /input-group -->
                     </li>
                     <li>
-                        <a href="/"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
+                        <a href="#/"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
+                    </li>
+                    <li>
+                        <a href="#"><i class="fa fa-paw fa-fw"></i> Animals<span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level" ng-controller="Animals">
+                            <li ng-repeat="animal in animals">
+                                <a ng-href="#/Animals/{{animal.name}}">{{animal.name}}</a>
+                            </li>
+                        </ul>
+                        <!-- /.nav-second-level -->
                     </li>
                 </ul>
             </div>
