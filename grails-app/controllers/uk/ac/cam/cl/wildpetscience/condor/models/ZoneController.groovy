@@ -15,6 +15,12 @@ class ZoneController {
 
     @Transactional
     def save(Zone zone) {
+        Client c = Client.get(params.ClientId);
+        if (c == null || !c.accessKey.equals(params.accessKey)) {
+            render status: UNAUTHORIZED;
+            return;
+        }
+
         if (zone == null) {
             render status: NOT_FOUND;
             return;
@@ -26,7 +32,6 @@ class ZoneController {
             return;
         }
 
-        Client c = Client.get(params.ClientId);
         c.addToZones(zone);
         c.save flush:true;
         respond zone, [status: CREATED];
@@ -34,6 +39,12 @@ class ZoneController {
 
     @Transactional
     def update(Zone zone) {
+        Client c = Client.get(params.ClientId);
+        if (c == null || !c.accessKey.equals(params.accessKey)) {
+            render status: UNAUTHORIZED;
+            return;
+        }
+
         if (zone == null) {
             render status: NOT_FOUND;
             return;
@@ -51,6 +62,12 @@ class ZoneController {
 
     @Transactional
     def delete(Zone zone) {
+        Client c = Client.get(params.ClientId);
+        if (c == null || !c.accessKey.equals(params.accessKey)) {
+            render status: UNAUTHORIZED;
+            return;
+        }
+
         if (zone == null) {
             render status: NOT_FOUND;
             return;

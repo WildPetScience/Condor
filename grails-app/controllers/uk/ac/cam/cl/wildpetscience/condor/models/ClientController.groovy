@@ -8,9 +8,25 @@ class ClientController {
     static responseFormats = ['json', 'xml'];
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"];
 
-    def index(Integer max) {
-        params.max = Math.min(max ?: 10, 100)
-        respond Client.list(params), model:[clientInstanceCount: Client.count()]
+    def index() {
+        AnimalType at = AnimalType.findByName(params.animalType);
+        if (at != null) {
+            respond Client.findAllByAnimalType(at, [sort: "identifier"]);
+            return;
+        }
+
+        respond Client.list();
+    }
+
+    def show() {
+        Client client = Client.findByIdentifier(params.id);
+
+        if (client == null) {
+            render status: NOT_FOUND;
+            return;
+        }
+
+        respond client;
     }
 
     @Transactional
@@ -32,6 +48,12 @@ class ClientController {
 
     @Transactional
     def update(Client client) {
+        Client c = Client.get(client.id);
+        if (c == null || !c.accessKey.equals(params.accessKey)) {
+            render status: UNAUTHORIZED;
+            return;
+        }
+
         if (client == null) {
             render status: NOT_FOUND;
             return;
@@ -49,6 +71,12 @@ class ClientController {
 
     @Transactional
     def delete(Client client) {
+        Client c = Client.get(client.id);
+        if (c == null || !c.accessKey.equals(params.accessKey)) {
+            render status: UNAUTHORIZED;
+            return;
+        }
+
         if (client == null) {
             render status: NOT_FOUND;
             return;

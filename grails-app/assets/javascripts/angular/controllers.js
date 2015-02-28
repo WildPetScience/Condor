@@ -4,22 +4,100 @@
 
 var condorControllers = angular.module('condorControllers', []);
 
-condorControllers.controller('AnimalsCtrl', ['$scope', 'AnimalTypes',
+// Naming convention:
+// The suffix "Ctrl" indicates the controller is a page controller
+// Ie.
+// AnimalsCtrl is the controller for the Animals page
+// Animals is a controller which can be used in various pages
+
+condorControllers.controller('IndexCtrl', ['$scope',
+	function($scope) {
+		// Fake schema
+		$scope.clients = [
+			{
+				"animalType": "Hamster",
+				"identifier": "secret driver are"
+			},
+			{
+				"animalType": "Hamster",
+				"identifier": "things your is"
+			},
+			{
+				"animalType": "Goldfish",
+				"identifier": "officers gym that"
+			},
+			{
+				"animalType": "Hamster",
+				"identifier": "tip poker about"
+			},
+			{
+				"animalType": "Snake",
+				"identifier": "drive computer glass"
+			},
+			{
+				"animalType": "Snake",
+				"identifier": "paper cookie brush"
+			},
+			{
+				"animalType": "Tarantula",
+				"identifier": "pocket pen drink"
+			}
+		];
+	}
+]);
+
+condorControllers.controller('AnimalCtrl', ['$scope', '$routeParams', 'Clients',
+	function($scope, $routeParams, Clients) {
+		$scope.animal = $routeParams.animalName;
+
+		$scope.clients = Clients.query({animalType: $scope.animal});
+	}
+]);
+
+condorControllers.controller('PetCtrl', ['$scope', '$routeParams', 'Client',
+	function($scope, $routeParams, Client) {
+		$scope.identifier = $routeParams.identifier.replace(new RegExp('-', 'g'), ' ');
+
+		$scope.client = Client.query({identifier: $scope.identifier});
+
+		$scope.client.$promise.then(function() {
+			$(function() {
+				Morris.Area({
+					element: 'morris-area-chart',
+					data: $scope.client.positions,
+					xkey: 'time',
+					ykeys: ['speed'],
+					pointSize: 2,
+					hideHover: 'auto',
+					resize: true
+				});
+			});
+		});
+	}
+]);
+
+condorControllers.controller('PageNotFoundCtrl', ['$scope',
+	function($scope) {
+
+	}
+]);
+
+condorControllers.controller('Animals', ['$scope', 'AnimalTypes',
 	function($scope, AnimalTypes) {
 		$scope.animals = AnimalTypes.query();
 
 		/*
-		* Demo return array
-		* (although it should be pointed out that .query()
-		*  returns a promise object)
+		 * Demo return array
+		 * (although it should be pointed out that .query()
+		 *  returns a promise object)
 
-		$scope.animals = [
-			{
-				"class":"uk.ac.cam.cl.wildpetscience.condor.models.AnimalType",
-				"id":1,
-				"name":"Hamster"
-			}
-		];*/
+		 $scope.animals = [
+		 {
+		 "class":"uk.ac.cam.cl.wildpetscience.condor.models.AnimalType",
+		 "id":1,
+		 "name":"Hamster"
+		 }
+		 ];*/
 	}
 ]);
 

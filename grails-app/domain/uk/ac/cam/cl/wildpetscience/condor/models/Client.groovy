@@ -7,10 +7,23 @@ class Client {
     double cageWidth;
     double cageHeight;
 
+    String identifier;
+    String accessKey;
+
     List<AnimalPosition> positions;
     List<Zone> zones;
 
     static embedded = ['positions', 'zones'];
+    static constraints = {
+        identifier blank: false, size: 5..150, unique: true
+        accessKey display: false, blank: false, size: 5..150
+    }
+
+    static {
+        grails.converters.JSON.registerObjectMarshaller(Client) {
+            return it.properties.findAll {k,v -> k != 'accessKey'}
+        }
+    }
 }
 
 class AnimalPosition {

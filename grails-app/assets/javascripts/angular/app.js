@@ -2,26 +2,37 @@
 
 /* App Module */
 
-console.log("Hello");
-
 var condorApp = angular.module('condorApp', [
-  'ngRoute',
-  'condorControllers',
-  'condorServices'
+	'ngRoute',
+	'condorControllers',
+	'condorServices',
+	'condorFilters'
 ]);
 
 condorApp.config(['$routeProvider',
   function($routeProvider) {
     $routeProvider.
-	    when('/Animals', {
-		    templateUrl: 'partials/animals.html',
-		    controller: 'AnimalsCtrl'
+	    when('/404', {
+		    templateUrl: 'partials/404.html',
+		    controller: 'PageNotFoundCtrl'
+	    }).
+	    when('/', {
+		    templateUrl: 'partials/index.html',
+		    controller: 'IndexCtrl'
+	    }).
+	    when('/Animals/:animalName', {
+		    templateUrl: 'partials/animal.html',
+		    controller: 'AnimalCtrl'
+	    }).
+	    when('/Pets/:identifier', {
+		    templateUrl: 'partials/pet.html',
+		    controller: 'PetCtrl'
 	    }).
 	    when('/Example', {
 		    templateUrl: 'partials/example.html',
 		    controller: 'ExampleCtrl'
 	    }).
       otherwise({
-        redirectTo: '/Animals'
+        redirectTo: '/404'
       });
   }]);
