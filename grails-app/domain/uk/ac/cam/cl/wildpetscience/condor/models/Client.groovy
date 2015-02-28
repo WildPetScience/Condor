@@ -7,6 +7,9 @@ class Client {
     double cageWidth;
     double cageHeight;
 
+    String identifier;
+    String accessKey;
+
     List<AnimalPosition> positions;
     List<Zone> zones;
 

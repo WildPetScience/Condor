@@ -1,5 +1,7 @@
 package uk.ac.cam.cl.wildpetscience.condor.models
 
+import org.springframework.http.HttpStatus
+
 import static org.springframework.http.HttpStatus.*
 import grails.transaction.Transactional
 
@@ -8,13 +10,17 @@ class AnimalTypeController {
     static responseFormats = ['json', 'xml'];
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"];
 
-    def index(Integer max) {
-        params.max = Math.min(max ?: 10, 100)
-        respond AnimalType.list(params), model:[clientInstanceCount: Client.count()]
+    def index() {
+        respond AnimalType.listOrderByName();
     }
 
     @Transactional
     def save(AnimalType at) {
+        if (Admin.findByAccessKey(params.accessKey) == null) {
+            render status: UNAUTHORIZED;
+            return;
+        }
+
         if (at == null) {
             render status: NOT_FOUND;
             return;
@@ -32,6 +38,11 @@ class AnimalTypeController {
 
     @Transactional
     def update(AnimalType at) {
+        if (Admin.findByAccessKey(params.accessKey) == null) {
+            render status: UNAUTHORIZED;
+            return;
+        }
+
         if (at == null) {
             render status: NOT_FOUND;
             return;
@@ -49,6 +60,11 @@ class AnimalTypeController {
 
     @Transactional
     def delete(AnimalType at) {
+        if (Admin.findByAccessKey(params.accessKey) == null) {
+            render status: UNAUTHORIZED;
+            return;
+        }
+
         if (at == null) {
             render status: NOT_FOUND;
             return;

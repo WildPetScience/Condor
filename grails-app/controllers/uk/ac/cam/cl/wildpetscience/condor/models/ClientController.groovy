@@ -32,6 +32,12 @@ class ClientController {
 
     @Transactional
     def update(Client client) {
+        Client c = Client.get(client.id);
+        if (c == null || !c.accessKey.equals(params.accessKey)) {
+            render status: UNAUTHORIZED;
+            return;
+        }
+
         if (client == null) {
             render status: NOT_FOUND;
             return;
@@ -49,6 +55,12 @@ class ClientController {
 
     @Transactional
     def delete(Client client) {
+        Client c = Client.get(client.id);
+        if (c == null || !c.accessKey.equals(params.accessKey)) {
+            render status: UNAUTHORIZED;
+            return;
+        }
+
         if (client == null) {
             render status: NOT_FOUND;
             return;

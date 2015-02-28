@@ -15,6 +15,11 @@ class ZoneTypeController {
 
     @Transactional
     def save(ZoneType zt) {
+        if (Admin.findByAccessKey(params.accessKey) == null) {
+            render status: UNAUTHORIZED;
+            return;
+        }
+
         if (zt == null) {
             render status: NOT_FOUND;
             return;
@@ -32,6 +37,11 @@ class ZoneTypeController {
 
     @Transactional
     def update(ZoneType zt) {
+        if (Admin.findByAccessKey(params.accessKey) == null) {
+            render status: UNAUTHORIZED;
+            return;
+        }
+
         if (zt == null) {
             render status: NOT_FOUND;
             return;
@@ -49,6 +59,11 @@ class ZoneTypeController {
 
     @Transactional
     def delete(ZoneType zt) {
+        if (Admin.findByAccessKey(params.accessKey) == null) {
+            render status: UNAUTHORIZED;
+            return;
+        }
+
         if (zt == null) {
             render status: NOT_FOUND;
             return;
