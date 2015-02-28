@@ -14,6 +14,10 @@ class Client {
     List<Zone> zones;
 
     static embedded = ['positions', 'zones'];
+    static constraints = {
+        identifer blank: false, size: 5..150, unique: true
+        accessKey blank: false, size: 5..150
+    }
 }
 
 class AnimalPosition {
