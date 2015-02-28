@@ -9,15 +9,10 @@ class ClientController {
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"];
 
     def index() {
-        String animalType = params.animalType;
-        System.out.println(animalType);
-        if (animalType != null && animalType.length() > 0) {
-            AnimalType at = AnimalType.findByName(animalType);
-            System.out.println(at.name);
-            if (at != null) {
-                respond Client.findAllByAnimalType(at, [sort: "identifier"]);
-                return;
-            }
+        AnimalType at = AnimalType.findByName(params.animalType);
+        if (at != null) {
+            respond Client.findAllByAnimalType(at, [sort: "identifier"]);
+            return;
         }
 
         respond Client.list();
