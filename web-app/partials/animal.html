@@ -13,7 +13,8 @@
 			</div>
 			<!-- /.panel-heading -->
 			<div class="list-group">
-				<a href="#" class="list-group-item" ng-repeat="client in clients">
+				<a ng-href="#/Pets/{{client.identifier | spacesToDashes}}" class="list-group-item"
+				   ng-repeat="client in clients">
 					<i class="fa"></i> {{client.identifier}}
 				</a>
 			</div>

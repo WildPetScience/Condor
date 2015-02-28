@@ -14,6 +14,12 @@ class AnimalPositionController {
 
     @Transactional
     def save(AnimalPosition position) {
+        Client c = Client.get(params.ClientId);
+        if (c == null || !c.accessKey.equals(params.accessKey)) {
+            render status: UNAUTHORIZED;
+            return;
+        }
+
         if (position == null) {
             render status: NOT_FOUND;
             return;
@@ -25,7 +31,6 @@ class AnimalPositionController {
             return;
         }
 
-        Client c = Client.get(params.ClientId);
         c.addToPositions(position);
         c.save flush:true;
         respond position, [status: CREATED];
@@ -33,6 +38,12 @@ class AnimalPositionController {
 
     @Transactional
     def update(AnimalPosition position) {
+        Client c = Client.get(params.ClientId);
+        if (c == null || !c.accessKey.equals(params.accessKey)) {
+            render status: UNAUTHORIZED;
+            return;
+        }
+
         if (position == null) {
             render status: NOT_FOUND;
             return;
@@ -49,7 +60,13 @@ class AnimalPositionController {
     }
 
     @Transactional
-    def delete(AnimalPosition positon) {
+    def delete(AnimalPosition position) {
+        Client c = Client.get(params.ClientId);
+        if (c == null || !c.accessKey.equals(params.accessKey)) {
+            render status: UNAUTHORIZED;
+            return;
+        }
+
         if (position == null) {
             render status: NOT_FOUND;
             return;

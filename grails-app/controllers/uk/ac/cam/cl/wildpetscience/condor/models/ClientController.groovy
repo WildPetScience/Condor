@@ -18,6 +18,17 @@ class ClientController {
         respond Client.list();
     }
 
+    def show() {
+        Client client = Client.findByIdentifier(params.id);
+
+        if (client == null) {
+            render status: NOT_FOUND;
+            return;
+        }
+
+        respond client;
+    }
+
     @Transactional
     def save(Client client) {
         if (client == null) {

@@ -45,6 +45,7 @@ condorControllers.controller('IndexCtrl', ['$scope',
 		];
 	}
 ]);
+
 condorControllers.controller('AnimalCtrl', ['$scope', '$routeParams', 'Clients',
 	function($scope, $routeParams, Clients) {
 		$scope.animal = $routeParams.animalName;
@@ -53,6 +54,27 @@ condorControllers.controller('AnimalCtrl', ['$scope', '$routeParams', 'Clients',
 	}
 ]);
 
+condorControllers.controller('PetCtrl', ['$scope', '$routeParams', 'Client',
+	function($scope, $routeParams, Client) {
+		$scope.identifier = $routeParams.identifier.replace(new RegExp('-', 'g'), ' ');
+
+		$scope.client = Client.query({identifier: $scope.identifier});
+
+		$scope.client.$promise.then(function() {
+			$(function() {
+				Morris.Area({
+					element: 'morris-area-chart',
+					data: $scope.client.positions,
+					xkey: 'time',
+					ykeys: ['speed'],
+					pointSize: 2,
+					hideHover: 'auto',
+					resize: true
+				});
+			});
+		});
+	}
+]);
 
 condorControllers.controller('PageNotFoundCtrl', ['$scope',
 	function($scope) {

@@ -19,3 +19,11 @@ condorServices.factory('Clients', ['$resource',
 		});
 	}
 ]);
+
+condorServices.factory('Client', ['$resource',
+	function($resource){
+		return $resource('api/clients/:identifier', {identifier: '@identifier'}, {
+			query: {method:'GET', isArray:false}
+		});
+	}
+]);

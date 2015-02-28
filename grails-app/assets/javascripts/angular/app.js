@@ -3,9 +3,10 @@
 /* App Module */
 
 var condorApp = angular.module('condorApp', [
-  'ngRoute',
-  'condorControllers',
-  'condorServices'
+	'ngRoute',
+	'condorControllers',
+	'condorServices',
+	'condorFilters'
 ]);
 
 condorApp.config(['$routeProvider',
@@ -22,6 +23,10 @@ condorApp.config(['$routeProvider',
 	    when('/Animals/:animalName', {
 		    templateUrl: 'partials/animal.html',
 		    controller: 'AnimalCtrl'
+	    }).
+	    when('/Pets/:identifier', {
+		    templateUrl: 'partials/pet.html',
+		    controller: 'PetCtrl'
 	    }).
 	    when('/Example', {
 		    templateUrl: 'partials/example.html',

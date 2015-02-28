@@ -1,7 +1,7 @@
 class UrlMappings {
 
 	static mappings = {
-        "/api/clients"(resources:"Client", excludes:['create', 'show', 'edit', 'patch']) {
+        "/api/clients"(resources:"Client", excludes:['create', 'edit', 'patch']) {
             "/positions"(resources:"AnimalPosition", excludes:['create', 'show', 'edit', 'patch'])
             "/zones"(resources:"Zone", excludes:['create', 'show', 'edit', 'patch'])
 		}

@@ -15,8 +15,14 @@ class Client {
 
     static embedded = ['positions', 'zones'];
     static constraints = {
-        identifer blank: false, size: 5..150, unique: true
-        accessKey blank: false, size: 5..150
+        identifier blank: false, size: 5..150, unique: true
+        accessKey display: false, blank: false, size: 5..150
+    }
+
+    static {
+        grails.converters.JSON.registerObjectMarshaller(Client) {
+            return it.properties.findAll {k,v -> k != 'accessKey'}
+        }
     }
 }
 
