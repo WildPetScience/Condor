@@ -6,8 +6,26 @@ var condorControllers = angular.module('condorControllers', []);
 
 condorControllers.controller('AnimalsCtrl', ['$scope', 'AnimalTypes',
 	function($scope, AnimalTypes) {
-		function generateGraphDemo() {
-			$(function() {
+		$scope.animals = AnimalTypes.query();
+
+		/*
+		* Demo return array
+		* (although it should be pointed out that .query()
+		*  returns a promise object)
+
+		$scope.animals = [
+			{
+				"class":"uk.ac.cam.cl.wildpetscience.condor.models.AnimalType",
+				"id":1,
+				"name":"Hamster"
+			}
+		];*/
+	}
+]);
+
+condorControllers.controller('ExampleCtrl', [
+	function() {
+		$(function() {
 				Morris.Area({
 					element: 'morris-area-chart',
 					data: [{
@@ -122,9 +140,5 @@ condorControllers.controller('AnimalsCtrl', ['$scope', 'AnimalTypes',
 					resize: true
 				});
 			});
-		}
-
-		$scope.animals = AnimalTypes.query();
-
-		generateGraphDemo();
-	}]);
+	}
+]);
