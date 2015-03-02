@@ -1,3 +1,21 @@
+*.iws
+*Db.properties
+*Db.script
+.settings
+stacktrace.log
+/*.zip
+/plugin.xml
+/*.log
+/*DB.*
+/cobertura.ser
+.DS_Store
+/target/
+/out/
+/web-app/plugins
+/web-app/WEB-INF/classes
+/.link_to_grails_plugins/
+/target-eclipse/
+
 # IntelliJ IDEA - see https://intellij-support.jetbrains.com/entries/23393067
 .idea/workspace.xml
 .idea/tasks.xml

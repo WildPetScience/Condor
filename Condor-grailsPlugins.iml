@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module type="JAVA_MODULE" version="4">
+  <component name="FacetManager">
+    <facet type="web" name="GrailsWeb">
+      <configuration>
+        <webroots />
+        <sourceRoots />
+      </configuration>
+    </facet>
+    <facet type="hibernate" name="Hibernate">
+      <configuration>
+        <datasource-map />
+        <naming-strategy-map />
+      </configuration>
+    </facet>
+    <facet type="web" name="Web">
+      <configuration>
+        <descriptors>
+          <deploymentDescriptor name="web.xml" url="file://$MODULE_DIR$/target/work/plugins/asset-pipeline-1.9.9/src/groovy/uglifyjs/test/unit/compress/expected/forstatement.js" />
+        </descriptors>
+        <webroots>
+          <root url="file://$MODULE_DIR$/target/work/plugins/asset-pipeline-1.9.9/src/groovy/uglifyjs/test/unit/compress/expected" relative="/WEB-INF" />
+        </webroots>
+        <sourceRoots>
+          <root url="file://$MODULE_DIR$/target/work/plugins/cloud-support-1.0.11/src/groovy" />
+          <root url="file://$MODULE_DIR$/target/work/plugins/heroku-1.0.1/src/groovy" />
+          <root url="file://$MODULE_DIR$/target/work/plugins/heroku-1.0.1/grails-app/taglib" />
+          <root url="file://$MODULE_DIR$/target/work/plugins/tomcat-7.0.55/src/java" />
+          <root url="file://$MODULE_DIR$/target/work/plugins/tomcat-7.0.55/src/groovy" />
+          <root url="file://$MODULE_DIR$/target/work/plugins/webxml-1.4.1/src/groovy" />
+        </sourceRoots>
+      </configuration>
+    </facet>
+  </component>
+  <component name="NewModuleRootManager" inherit-compiler-output="true">
+    <exclude-output />
+    <content url="file://$MODULE_DIR$/target/work/plugins/asset-pipeline-2.1.1">
+      <sourceFolder url="file://$MODULE_DIR$/target/work/plugins/asset-pipeline-2.1.1/src/groovy" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/target/work/plugins/asset-pipeline-2.1.1/grails-app/services" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/target/work/plugins/asset-pipeline-2.1.1/grails-app/taglib" isTestSource="false" />
+    </content>
+    <content url="file://$MODULE_DIR$/target/work/plugins/cloud-support-1.0.11">
+      <sourceFolder url="file://$MODULE_DIR$/target/work/plugins/cloud-support-1.0.11/src/groovy" isTestSource="false" />
+    </content>
+    <content url="file://$MODULE_DIR$/target/work/plugins/heroku-1.0.1">
+      <sourceFolder url="file://$MODULE_DIR$/target/work/plugins/heroku-1.0.1/src/groovy" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/target/work/plugins/heroku-1.0.1/grails-app/taglib" isTestSource="false" />
+    </content>
+    <content url="file://$MODULE_DIR$/target/work/plugins/mongodb-3.0.2" />
+    <content url="file://$MODULE_DIR$/target/work/plugins/tomcat-7.0.55">
+      <sourceFolder url="file://$MODULE_DIR$/target/work/plugins/tomcat-7.0.55/src/java" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/target/work/plugins/tomcat-7.0.55/src/groovy" isTestSource="false" />
+    </content>
+    <content url="file://$MODULE_DIR$/target/work/plugins/webxml-1.4.1">
+      <sourceFolder url="file://$MODULE_DIR$/target/work/plugins/webxml-1.4.1/src/groovy" isTestSource="false" />
+    </content>
+    <orderEntry type="inheritedJdk" />
+    <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" scope="PROVIDED" name="grails-2.4.4" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="grails-2.4.4" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="grails-2.4.4" level="application" />
+    <orderEntry type="module-library" exported="">
+      <library name="Grails User Library (Condor-grailsPlugins)">
+        <CLASSES>
+          <root url="jar://$MAVEN_REPOSITORY$/org/grails/grails-datastore-web/3.1.2.RELEASE/grails-datastore-web-3.1.2.RELEASE.jar!/" />
+          <root url="jar://$MAVEN_REPOSITORY$/org/grails/grails-datastore-simple/3.1.2.RELEASE/grails-datastore-simple-3.1.2.RELEASE.jar!/" />
+          <root url="jar://$MAVEN_REPOSITORY$/org/grails/grails-datastore-core/3.1.2.RELEASE/grails-datastore-core-3.1.2.RELEASE.jar!/" />
+          <root url="jar://$MAVEN_REPOSITORY$/org/grails/grails-datastore-gorm/3.1.2.RELEASE/grails-datastore-gorm-3.1.2.RELEASE.jar!/" />
+          <root url="jar://$MAVEN_REPOSITORY$/org/grails/grails-datastore-gorm-plugin-support/3.1.2.RELEASE/grails-datastore-gorm-plugin-support-3.1.2.RELEASE.jar!/" />
+          <root url="jar://$MAVEN_REPOSITORY$/org/mongodb/mongo-java-driver/2.12.3/mongo-java-driver-2.12.3.jar!/" />
+          <root url="jar://$MAVEN_REPOSITORY$/com/gmongo/gmongo/1.2/gmongo-1.2.jar!/" />
+          <root url="jar://$MAVEN_REPOSITORY$/org/springframework/data/spring-data-commons/1.7.3.RELEASE/spring-data-commons-1.7.3.RELEASE.jar!/" />
+          <root url="jar://$MAVEN_REPOSITORY$/org/springframework/data/spring-data-mongodb/1.4.3.RELEASE/spring-data-mongodb-1.4.3.RELEASE.jar!/" />
+          <root url="jar://$MAVEN_REPOSITORY$/org/grails/grails-datastore-gorm-mongodb/3.0.2.RELEASE/grails-datastore-gorm-mongodb-3.0.2.RELEASE.jar!/" />
+          <root url="jar://$MAVEN_REPOSITORY$/org/javassist/javassist/3.17.1-GA/javassist-3.17.1-GA.jar!/" />
+          <root url="jar://$MAVEN_REPOSITORY$/org/grails/grails-datastore-test-support/1.0.2-grails-2.4/grails-datastore-test-support-1.0.2-grails-2.4.jar!/" />
+          <root url="jar://$MAVEN_REPOSITORY$/cglib/cglib-nodep/2.2.2/cglib-nodep-2.2.2.jar!/" />
+          <root url="jar://$MAVEN_REPOSITORY$/org/apache/tomcat/embed/tomcat-embed-core/7.0.55/tomcat-embed-core-7.0.55.jar!/" />
+          <root url="jar://$MAVEN_REPOSITORY$/org/eclipse/jdt/core/compiler/ecj/3.7.2/ecj-3.7.2.jar!/" />
+          <root url="jar://$MAVEN_REPOSITORY$/org/apache/tomcat/embed/tomcat-embed-websocket/7.0.55/tomcat-embed-websocket-7.0.55.jar!/" />
+          <root url="jar://$MAVEN_REPOSITORY$/org/apache/tomcat/embed/tomcat-embed-logging-log4j/7.0.55/tomcat-embed-logging-log4j-7.0.55.jar!/" />
+          <root url="jar://$MAVEN_REPOSITORY$/org/apache/tomcat/embed/tomcat-embed-el/7.0.55/tomcat-embed-el-7.0.55.jar!/" />
+          <root url="jar://$MAVEN_REPOSITORY$/org/apache/tomcat/embed/tomcat-embed-jasper/7.0.55/tomcat-embed-jasper-7.0.55.jar!/" />
+          <root url="jar://$MAVEN_REPOSITORY$/org/apache/tomcat/tomcat-catalina-ant/7.0.55/tomcat-catalina-ant-7.0.55.jar!/" />
+          <root url="jar://$MAVEN_REPOSITORY$/org/mozilla/rhino/1.7R4/rhino-1.7R4.jar!/" />
+          <root url="jar://$MAVEN_REPOSITORY$/com/bertramlabs/plugins/asset-pipeline-core/2.1.1/asset-pipeline-core-2.1.1.jar!/" />
+          <root url="jar://$MAVEN_REPOSITORY$/commons-logging/commons-logging/1.1.1/commons-logging-1.1.1.jar!/" />
+          <root url="jar://$MAVEN_REPOSITORY$/com/google/guava/guava/18.0/guava-18.0.jar!/" />
+          <root url="jar://$MAVEN_REPOSITORY$/args4j/args4j/2.0.26/args4j-2.0.26.jar!/" />
+          <root url="jar://$MAVEN_REPOSITORY$/com/google/javascript/closure-compiler-externs/v20141023/closure-compiler-externs-v20141023.jar!/" />
+          <root url="jar://$MAVEN_REPOSITORY$/com/google/javascript/closure-compiler/v20141023/closure-compiler-v20141023.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+  </component>
+</module>
