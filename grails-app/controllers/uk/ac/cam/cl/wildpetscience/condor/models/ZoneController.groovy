@@ -26,6 +26,15 @@ class ZoneController {
             return;
         }
 
+        if (zone.zoneName != null) {
+            ZoneType zt = ZoneType.findByName(zone.zoneName);
+            if (zt == null) {
+                render status: NOT_ACCEPTABLE;
+                return;
+            }
+            zone.zoneType = zt;
+        }
+
         zone.validate()
         if (zone.hasErrors()) {
             respond zone.errors.getAllErrors(), [status: NOT_ACCEPTABLE];

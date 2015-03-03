@@ -38,4 +38,9 @@ class AnimalPosition {
 class Zone {
     String zoneName;
     ZoneType zoneType;
+
+    static constraints = {
+        zoneName unique:true
+        zoneType unique:true
+    }
 }
