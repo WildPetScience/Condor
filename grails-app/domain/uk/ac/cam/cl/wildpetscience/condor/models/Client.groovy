@@ -17,6 +17,7 @@ class Client {
     static constraints = {
         identifier blank: false, size: 5..150, unique: true
         accessKey display: false, blank: false, size: 5..150
+        animalType nullable: false
     }
 
     static {
