@@ -61,28 +61,25 @@ condorControllers.controller('PetCtrl', ['$scope', '$routeParams', 'Client',
 		$scope.client = Client.query({identifier: $scope.identifier});
 
 		$scope.client.$promise.then(function() {
-			var parseZones = function(rawData) {
-				var otherZone = "Other";
-				var zones = {};
-				zones[otherZone] = { name: otherZone, count: 0 };
-				angular.forEach(rawData.zones, function(value, key) {
-					zones[value.id] = { name: value.zoneName, count: 0 };
-				});
-				angular.forEach(rawData.positions, function(value, key) {
-					if (value.zone != null) {
-						zones[value.zone.id].count++;
-					} else {
-						zones[otherZone].count++;
-					}
-				});
-				var donutData = [];
-				angular.forEach(zones, function(value, key) {
-					donutData.push({ label: value.name, "value": value.count });
-				});
-				return donutData;
-			};
-
-			var donutData = parseZones($scope.client);
+			var otherZone = "Other";
+			var zones = {};
+			zones[otherZone] = { name: otherZone, count: 0 };
+			angular.forEach($scope.client.zones, function(value, key) {
+				zones[value.id] = { name: value.zoneName, count: 0 };
+			});
+			angular.forEach($scope.client.positions, function(value, key) {
+				if (value.zone != null) {
+					zones[value.zone.id].count++;
+				} else {
+					zones[otherZone].count++;
+				}
+			});
+			var donutData = [];
+			var totalFrameCount = 0;
+			angular.forEach(zones, function(value, key) {
+				totalFrameCount += value.count;
+				donutData.push({ label: value.name, "value": value.count });
+			});
 
 			var speedData = [];
 			var lastDate;
@@ -112,10 +109,13 @@ condorControllers.controller('PetCtrl', ['$scope', '$routeParams', 'Client',
 					resize: true
 				});
 
+				console.log(donutData.length);
+
 				Morris.Donut({
 					element: 'morris-donut-chart',
 					data: donutData,
-					resize: true
+					resize: true,
+					formatter: function (value, data) { return Math.round((value/totalFrameCount)*100) + '%'; }
 				});
 			});
 		});
