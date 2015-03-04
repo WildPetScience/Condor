@@ -136,7 +136,8 @@ condorControllers.controller('PetCtrl', ['$scope', '$routeParams', 'Client',
 				});
 
 				var points = [];
-				var max = 0;
+				var k = 0.01;
+				var max = totalFrameCount/(k * Math.PI * 40 * 40);
 				angular.forEach($scope.client.positions, function(value, key) {
 					points.push({ x: value.x * $scope.client.cageWidth, y: value.y * $scope.client.cageHeight });
 				});
