@@ -15,8 +15,7 @@
 //= require ./../bower-components/metisMenu/dist/metisMenu.js
 //= require ./../bower-components/raphael/raphael.js
 //= require ./../bower-components/morrisjs/morris.js
-//= require morris-data.js
 //= require ./../bower-components/startbootstrap-sb-admin-2/dist/js/sb-admin-2.js
+//= require ./heatmap.js-amd/heatmap.js
 
-//= require_tree .
 //= require_self

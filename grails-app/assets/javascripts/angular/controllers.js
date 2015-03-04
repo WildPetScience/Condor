@@ -61,16 +61,102 @@ condorControllers.controller('PetCtrl', ['$scope', '$routeParams', 'Client',
 		$scope.client = Client.query({identifier: $scope.identifier});
 
 		$scope.client.$promise.then(function() {
+			var minCageWidth = 600;
+			var minCageHeight = 400;
+
+			if ($scope.client.cageWidth < minCageWidth) {
+				$scope.client.cageWidth = minCageWidth;
+			}
+			if ($scope.client.cageHeight < minCageHeight) {
+				$scope.client.cageHeight = minCageHeight;
+			}
+
+			var otherZone = "Other";
+			var zones = {};
+			zones[otherZone] = { name: otherZone, count: 0 };
+			angular.forEach($scope.client.zones, function(value, key) {
+				zones[value.id] = { name: value.zoneName, count: 0 };
+			});
+			angular.forEach($scope.client.positions, function(value, key) {
+				if (value.zone != null) {
+					zones[value.zone.id].count++;
+				} else {
+					zones[otherZone].count++;
+				}
+			});
+			var donutData = [];
+			var totalFrameCount = 0;
+			angular.forEach(zones, function(value, key) {
+				totalFrameCount += value.count;
+				donutData.push({ label: value.name, "value": value.count });
+			});
+
+			var speedData = [];
+			var lastDate;
+			angular.forEach($scope.client.positions, function(value, key) {
+				if (lastDate == null) {
+					lastDate = new Date(value.time);
+					speedData.push({time: value.time, speed: value.speed});
+				} else {
+					var date = new Date(value.time);
+					var diff = date - lastDate;
+					if (diff > 5000) {
+						speedData.push({time: value.time, speed: value.speed});
+						lastDate = date;
+					}
+				}
+			});
+
 			$(function() {
 				Morris.Area({
 					element: 'morris-area-chart',
-					data: $scope.client.positions,
+					data: speedData,
 					xkey: 'time',
 					ykeys: ['speed'],
+					labels: ['Speed'],
 					pointSize: 2,
 					hideHover: 'auto',
-					resize: true
+					resize: true,
+					dateFormat: function (x) {
+						var date = new Date(x);
+						return date.getHours() + ':' + date.getMinutes() + ':' + date.getSeconds() + ' ' +
+							date.getDate() + '-' + date.getMonth() + '-' + date.getFullYear();
+					},
+					yLabelFormat: function (y) { return (Math.round(y*100)/100).toString(); }
 				});
+
+				Morris.Donut({
+					element: 'morris-donut-chart',
+					data: donutData,
+					resize: true,
+					formatter: function (value, data) { return Math.round((value/totalFrameCount)*100) + '%'; }
+				});
+
+				$('.heatmap').width($scope.client.cageWidth);
+				$('.heatmap').height($scope.client.cageHeight);
+
+				// minimal heatmap instance configuration
+				var heatmapInstance = h337.create({
+					// only container is required, the rest will be defaults
+					container: document.querySelector('.heatmap')
+				});
+
+				var points = [];
+				var k = 0.01;
+				var max = totalFrameCount/(k * Math.PI * 40 * 40);
+				angular.forEach($scope.client.positions, function(value, key) {
+					points.push({ x: value.x * $scope.client.cageWidth, y: value.y * $scope.client.cageHeight });
+				});
+
+				// heatmap data format
+				var data = {
+					max: max,
+					data: points
+				};
+				
+				// if you have a set of datapoints always use setData instead of addData
+				// for data initialization
+				heatmapInstance.setData(data);
 			});
 		});
 	}
