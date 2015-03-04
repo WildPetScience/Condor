@@ -61,6 +61,29 @@ condorControllers.controller('PetCtrl', ['$scope', '$routeParams', 'Client',
 		$scope.client = Client.query({identifier: $scope.identifier});
 
 		$scope.client.$promise.then(function() {
+			var parseZones = function(rawData) {
+				var otherZone = "Other";
+				var zones = {};
+				zones[otherZone] = { name: otherZone, count: 0 };
+				angular.forEach(rawData.zones, function(value, key) {
+					zones[value.id] = { name: value.zoneName, count: 0 };
+				});
+				angular.forEach(rawData.positions, function(value, key) {
+					if (value.zone != null) {
+						zones[value.zone.id].count++;
+					} else {
+						zones[otherZone].count++;
+					}
+				});
+				var donutData = [];
+				angular.forEach(zones, function(value, key) {
+					donutData.push({ label: value.name, "value": value.count });
+				});
+				return donutData;
+			};
+
+			var donutData = parseZones($scope.client);
+
 			$(function() {
 				Morris.Area({
 					element: 'morris-area-chart',
@@ -69,6 +92,12 @@ condorControllers.controller('PetCtrl', ['$scope', '$routeParams', 'Client',
 					ykeys: ['speed'],
 					pointSize: 2,
 					hideHover: 'auto',
+					resize: true
+				});
+
+				Morris.Donut({
+					element: 'morris-donut-chart',
+					data: donutData,
 					resize: true
 				});
 			});
