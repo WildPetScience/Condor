@@ -61,6 +61,16 @@ condorControllers.controller('PetCtrl', ['$scope', '$routeParams', 'Client',
 		$scope.client = Client.query({identifier: $scope.identifier});
 
 		$scope.client.$promise.then(function() {
+			var minCageWidth = 600;
+			var minCageHeight = 400;
+
+			if ($scope.client.cageWidth < minCageWidth) {
+				$scope.client.cageWidth = minCageWidth;
+			}
+			if ($scope.client.cageHeight < minCageHeight) {
+				$scope.client.cageHeight = minCageHeight;
+			}
+
 			var otherZone = "Other";
 			var zones = {};
 			zones[otherZone] = { name: otherZone, count: 0 };
@@ -115,6 +125,31 @@ condorControllers.controller('PetCtrl', ['$scope', '$routeParams', 'Client',
 					resize: true,
 					formatter: function (value, data) { return Math.round((value/totalFrameCount)*100) + '%'; }
 				});
+
+				$('.heatmap').width($scope.client.cageWidth);
+				$('.heatmap').height($scope.client.cageHeight);
+
+				// minimal heatmap instance configuration
+				var heatmapInstance = h337.create({
+					// only container is required, the rest will be defaults
+					container: document.querySelector('.heatmap')
+				});
+
+				var points = [];
+				var max = 0;
+				angular.forEach($scope.client.positions, function(value, key) {
+					points.push({ x: value.x * $scope.client.cageWidth, y: value.y * $scope.client.cageHeight });
+				});
+
+				// heatmap data format
+				var data = {
+					max: max,
+					data: points
+				};
+				
+				// if you have a set of datapoints always use setData instead of addData
+				// for data initialization
+				heatmapInstance.setData(data);
 			});
 		});
 	}
