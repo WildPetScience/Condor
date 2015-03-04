@@ -109,8 +109,6 @@ condorControllers.controller('PetCtrl', ['$scope', '$routeParams', 'Client',
 					resize: true
 				});
 
-				console.log(donutData.length);
-
 				Morris.Donut({
 					element: 'morris-donut-chart',
 					data: donutData,
