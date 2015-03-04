@@ -84,12 +84,29 @@ condorControllers.controller('PetCtrl', ['$scope', '$routeParams', 'Client',
 
 			var donutData = parseZones($scope.client);
 
+			var speedData = [];
+			var lastDate;
+			angular.forEach($scope.client.positions, function(value, key) {
+				if (lastDate == null) {
+					lastDate = new Date(value.time);
+					speedData.push({time: value.time, speed: value.speed});
+				} else {
+					var date = new Date(value.time);
+					var diff = date - lastDate;
+					if (diff > 5000) {
+						speedData.push({time: value.time, speed: value.speed});
+						lastDate = date;
+					}
+				}
+			});
+
 			$(function() {
 				Morris.Area({
 					element: 'morris-area-chart',
-					data: $scope.client.positions,
+					data: speedData,
 					xkey: 'time',
 					ykeys: ['speed'],
+					labels: ['Speed'],
 					pointSize: 2,
 					hideHover: 'auto',
 					resize: true
