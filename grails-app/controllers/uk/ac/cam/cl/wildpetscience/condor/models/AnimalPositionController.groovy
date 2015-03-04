@@ -25,6 +25,15 @@ class AnimalPositionController {
             return;
         }
 
+        if (position.zone != null) {
+            Zone z = c.zones.find { it.zoneName.equals(position.zone.zoneName) };
+            if (z == null) {
+                render status: NOT_ACCEPTABLE
+                return;
+            }
+            position.zone = z;
+        }
+
         position.validate()
         if (position.hasErrors()) {
             respond position.errors.getAllErrors(), [status: NOT_ACCEPTABLE];

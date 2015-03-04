@@ -36,6 +36,15 @@ class ClientController {
             return;
         }
 
+        if (client.animalType != null) {
+            AnimalType at = AnimalType.findByName(client.animalType.name);
+            if (client.animalType.name.isEmpty() || at == null) {
+                render status: NOT_ACCEPTABLE
+            }
+
+            client.animalType = at;
+        }
+
         client.validate()
         if (client.hasErrors()) {
             respond client.errors.getAllErrors(), [status: NOT_ACCEPTABLE];
