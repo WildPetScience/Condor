@@ -116,7 +116,13 @@ condorControllers.controller('PetCtrl', ['$scope', '$routeParams', 'Client',
 					labels: ['Speed'],
 					pointSize: 2,
 					hideHover: 'auto',
-					resize: true
+					resize: true,
+					dateFormat: function (x) {
+						var date = new Date(x);
+						return date.getHours() + ':' + date.getMinutes() + ':' + date.getSeconds() + ' ' +
+							date.getDate() + '-' + date.getMonth() + '-' + date.getFullYear();
+					},
+					yLabelFormat: function (y) { return (Math.round(y*100)/100).toString(); }
 				});
 
 				Morris.Donut({
